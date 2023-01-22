@@ -55,6 +55,8 @@ for coin in coinArr:
 print(count)
 ```
 
-      :star: 큰 화폐 단위의 동전이 항상 작은 화폐 단위의 동전의 배수이므로 정당한 알고리즘이다.
+:star: 큰 화폐 단위의 동전이 항상 작은 화폐 단위의 동전의 배수이므로 정당한 알고리즘이다.
+
+:arrow_right: O(K) (K: 화폐 단위의 개수)
 
 2. Knapsack (배낭 채우기)
