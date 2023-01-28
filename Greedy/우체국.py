@@ -24,7 +24,7 @@ for i in range(n): population += xa[i][1]
 sum = 0
 for i in range(n):
   sum += xa[i][1]
-  if sum >= int((population + 1) / 2):        # 인원 수가 많은 쪽에 우체국 
+  if sum >= int((population + 1) / 2):        # 인원 수가 많은 쪽에 우체국 ex) (1,5) (2,6) -> 2에 설치해야 함
     print(xa[i][0])
     break
 
