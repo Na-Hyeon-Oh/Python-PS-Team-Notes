@@ -19,13 +19,11 @@ def input():
   return sys.stdin.readline().rstrip()
 
 n = int(input())
-nodes = []
 parentNodes = [0] * (n + 1)      # node id가 1부터 시작하므로
 leftChild = dict()
 rightChild = dict()
 for _ in range(n):
   a, b, c = map(int, input().split())
-  nodes.append([a, b, c])
   if b != -1: parentNodes[b] = a
   if c != -1: parentNodes[c] = a
   leftChild[a] = b
