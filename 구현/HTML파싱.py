@@ -35,8 +35,8 @@ for div in html:
   title = title.split("\"")[1]
   print(f'title : {title}')
   for p in paragraphs:
-    parsed = re.sub(r'</?[\w ]*>', '', p)
-    parsed = ' '.join(parsed.split())
+    parsed = re.sub(r'</?[\w ]*>', '', p)               # 정규식으로 <p>...</p> 의 모든 태그 제거
+    parsed = ' '.join(parsed.split())                   # 두 개 이상의 space 한 개로 
     print(parsed)
 
 
