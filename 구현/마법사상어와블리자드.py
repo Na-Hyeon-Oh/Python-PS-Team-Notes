@@ -124,7 +124,8 @@ for attack in blizard:
     
 print(explodedMarbles[0] + 2 * explodedMarbles[1] + 3 * explodedMarbles[2])
 
+
 ''' 
 explode를 위한 list를 만드는 것과 ground에 다시 저장(mark)하는 것은 같은 알고리즘을 사용한다.
-- function을 사용하면 더 
+- function을 사용하면 더 간단 + 2차원 배열과 1차원 배열 간 dictionary 생성 (ref. # https://kimjingo.tistory.com/171)
 '''
