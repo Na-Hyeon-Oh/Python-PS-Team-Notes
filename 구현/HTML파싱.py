@@ -20,7 +20,24 @@
 '''
 
 # (i)
+import sys
+import re
 
+def input():
+  return sys.stdin.readline().rstrip()
+
+html = input()
+html = html.split("<main>")[1].split("</main>")[0]
+html = html.split("</div>")[:-1]
+for div in html:
+  title = div.split(">")[0]
+  paragraphs = div[len(title)+1:].split("</p>")[:-1]
+  title = title.split("\"")[1]
+  print(f'title : {title}')
+  for p in paragraphs:
+    parsed = re.sub(r'</?[\w ]*>', '', p)
+    parsed = ' '.join(parsed.split())
+    print(parsed)
 
 
 # (ii)
