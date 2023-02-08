@@ -171,3 +171,90 @@ bfs(graph, 1, visited)
 ```
 
 
+## Ex
+
+1. 음료수 얼려 먹기
+
+- n * m의 얼음틀이 있을 때, 구멍이 뚫린 부분은 0, 칸막이가 존재하는 부분은 1로 표시된다.
+ 구멍이 뚫려 있는 부분끼리 상하좌우로 붙어 있는 경우 서로 연결되어 있는 것으로 간주할 때,
+ 얼음 틀의 모양이 주어졌을 때 생성되는 총 아이스크림의 개수를 구하는 프로그램
+
+- 1 <= N, M <= 1000 
+  
+  1. DFS
+  ```
+   n, m = map(int , input().split())
+   
+   graph = []
+   for i in range(n):
+    graph.append(list(map(int, input())))
+   
+   def dfs(x, y):
+    if x <= -1 or x >= n or y <= -1 or y >= m: return False
+    # 현재 노드를 아직 방문하지 않았다면
+    if graph[x][y] == 0:
+     graph[x][y] = 1      # 해당 노드 방문 처리
+     # 상하좌우 위치 재귀적으로 호출
+     dfs(x - 1, y)
+     dfs(x, y - 1)
+     dfs(x + 1, y)
+     dfs(x, y + 1)
+     return True
+    return False
+   
+   # 모든 노드에 대해 음료수 채우기
+   result = 0
+   for i in range(n):
+    for j in range(m):
+     # 현재 위치에서 dfs 수행
+     if dfs(i, j) == True: result += 1
+     
+   print(result)
+   
+  
+   def dfs(x,y)
+  ```
+  
+  2. BFS도 가능
+
+2. 미로 찾기
+
+- n * m의 미로가 있을 때 괴물을 피하면서 탈출을 해야 한다. 현재 위치는 (1, 1)이며 출구는 (n, m)에 존재하며 한 번에 한 칸씩 이동할 수 있다. 괴물을 0 칸에 존재하고 괴물이 없는 부분은 1로 표시되어 있을 때, 탈출하기 위해 움직여야 하는 최소 칸의 개수(시작 칸과 마지막 칸을 모두 포함)를 구하라.
+
+- 4 <= n, m <= 200
+
+  1. BFS를 이용하여 시작 지점부터 가까운 노드 차례대로 그래프의 모든 노드를 탐색하며 모든 노드의 최단 거리 값을 기록하여 해결
+  ```
+  from collections import deque
+  
+  n, m = map(int, input().split())
+  graph = []
+  for i in range(n):
+   graph.append(list(map(int, input())))
+  
+  # 상하좌우
+  dx = [-1, 1, 0, 0]
+  dy = [0, 0, -1, 1]
+  
+  def bfs(x, y):
+   queue = deque()
+   queue.append((x, y))
+   
+   while queue:
+    x, y = queue.popleft()
+    for i in range(4):
+     nx = x + dx[i]
+     ny = y + dy[i]
+     if nx < 0 or nx >= n or ny < 0 or ny >= m: continue
+     if graph[nx][ny] == 0: continue   # 벽
+     # 해당 노드를 처음 방문하는 경우에만 최단 거리 기록
+     if graph[nx][ny] == 1:
+      graph[nx][ny] = graph[x][y] + 1
+      queue.append((nx, ny))
+   return graph[n - 1][m - 1]
+  
+  print(bfs(0, 0))
+  ``` 
+
+
+
