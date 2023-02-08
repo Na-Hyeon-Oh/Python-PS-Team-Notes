@@ -88,6 +88,86 @@ def gcd(a, b):
       방문하지 않은 인접 노드가 없으면 스택에서 최상단 노드를 꺼낸다.
   4. 더 이상 2번의 과정을 수행할 수 없을 때까지 반복한다.
 
+ ex. 재귀함수 사용
+ 
+ ```
+ # 각 노드의 연결 정보 표현
+ graph = [
+  [], 
+  [2, 3, 8],
+  [1, 7],
+  [1, 4, 5],
+  [3, 5],
+  [3, 4],
+  [7],
+  [2, 6, 8],
+  [1, 7]
+ ]
+ 
+ # 각 노드의 방문 정보 표현
+ visited = [False] * 9
+ 
+ def dfs(graph, v, visited):
+  # 현재 노드 방문 처리
+  visited[v] = True
+  print(v, end=' ')
+  for i in graph[v]:
+   if not visited[i]: dfs(graph, i, visited)
+  
+dfs(graph, 1, visited)
 
-## BFS (B-First Search
+ ```
+
+
+## BFS (Breadth-First Search; 너비 우선 탐색)
+
+그래프에서 가까운 노드부터 우선적으로 탐색하는 알고리즘
+
+- 큐 자료구조를 다음과 같이 이용한다.
+  
+  1. 탐색 시작 노드를 큐에 삽입하고 방문 처리를 한다.
+  2. 큐에서 노드를 꺼낸 뒤에 해당 노드의 인접 노드 중에서 방문하지 않은 노드를 모두 큐에 삽입하고 방문 처리한다.
+  3. 더 이상 2번의 과정을 수행할 수 없을 때까지 반복한다.
+
+- 전체 노드의 탐색 순서 (큐에 들어가는 순서)가 동일한 노드가 먼저 들어가므로 특정 조건에서의 최단 경로 문제 등에 활용됨
+
+ex.
+```
+from collections import deque
+
+ # 각 노드의 연결 정보 표현
+ graph = [
+  [], 
+  [2, 3, 8],
+  [1, 7],
+  [1, 4, 5],
+  [3, 5],
+  [3, 4],
+  [7],
+  [2, 6, 8],
+  [1, 7]
+ ]
+ 
+ # 각 노드의 방문 정보 표현
+ visited = [False] * 9
+ 
+ def bfs(graph, start, visited):
+  # queue를 위해 deque 사용
+  queue = deque([start])
+  # 현재 노드를 방문 처리
+  visited[start] = True
+  # 큐가 빌 때까지 반복
+  while queue:
+   # 큐에서 하나의 원소를 뽑아 출력하기
+   v = queue.popleft()
+   print(v, end = ' ')
+   # 아직 방문하지 않은 인접한 원소들을 큐에 삽입
+   for i in graph[v]:
+    if not visited[i]:
+     queue.append(i)
+     visited[i] = True
+     
+bfs(graph, 1, visited)
+```
+
 
