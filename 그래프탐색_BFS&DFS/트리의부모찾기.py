@@ -13,6 +13,15 @@ sys.setrecursionlimit(1000000)
 def input():
   return sys.stdin.readline().rstrip()
 
+def dfs(start):
+  if visited[start] != True:
+    visited[start] = True
+    for i in range(len(graph[start])):
+      if visited[graph[start][i]] != True:
+        child = graph[start][i]
+        parents[child] = start
+        dfs(child)
+        
 n = int(input())
 graph = [[] for _ in range(n+1)]
 for _ in range(n-1):
@@ -22,14 +31,6 @@ for _ in range(n-1):
 
 parents = dict()
 visited = [False] * (n + 1)
-def dfs(start):
-  if visited[start] != True:
-    visited[start] = True
-    for i in range(len(graph[start])):
-      if visited[graph[start][i]] != True:
-        child = graph[start][i]
-        parents[child] = start
-        dfs(child)
 
 dfs(1)
 for i in range(2, n + 1):
