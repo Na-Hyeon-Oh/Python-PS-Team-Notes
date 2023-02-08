@@ -13,18 +13,6 @@ from collections import deque
 def input():
   return sys.stdin.readline().rstrip()
 
-n, m, v = map(int, input().split())
-graph = [[] for _ in range(n + 1)]
-for _ in range(m):
-  n1, n2 = map(int, input().split())
-  graph[n1].append(n2)
-  graph[n2].append(n1)
-for connection in graph:
-  connection.sort()
-
-dfsVisited = [False] * (n + 1)
-bfsVisited = [False] * (n + 1)
-
 def dfs(start):
   if dfsVisited[start] != True:
     dfsVisited[start] = True
@@ -42,6 +30,18 @@ def bfs(start):
       if bfsVisited[connection] != True:
         queue.append(connection)
         bfsVisited[connection] = True
+
+n, m, v = map(int, input().split())
+graph = [[] for _ in range(n + 1)]
+for _ in range(m):
+  n1, n2 = map(int, input().split())
+  graph[n1].append(n2)
+  graph[n2].append(n1)
+for connection in graph:
+  connection.sort()
+
+dfsVisited = [False] * (n + 1)
+bfsVisited = [False] * (n + 1)
 
 dfs(v)
 print()
