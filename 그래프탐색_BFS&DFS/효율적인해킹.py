@@ -13,13 +13,6 @@ from collections import deque
 def input():
   return sys.stdin.readline()
 
-n, m = map(int, input().split())
-network = [[] for _ in range(n+1)]
-for _ in range(m):
-  a, b = map(int, input().split())
-  network[b].append(a)
-
-
 def bfs(start):
   visited = [False] * (n+1)
   visited[start] = True
@@ -33,6 +26,12 @@ def bfs(start):
         queue.append(connection)
         cnt += 1
   return cnt
+
+n, m = map(int, input().split())
+network = [[] for _ in range(n+1)]
+for _ in range(m):
+  a, b = map(int, input().split())
+  network[b].append(a)
         
 maxCnt = 0
 result = []
