@@ -12,6 +12,15 @@ import sys
 def input():
   return sys.stdin.readline().rstrip()
 
+def dfs(start):
+  global result
+  if status[start] != True:
+    status[start] = True
+    for i in range(len(network[start])):
+      if status[network[start][i]] != True:
+        dfs(network[start][i])
+        result += 1
+        
 n = int(input())
 network = [[] for _ in range(n + 1)]
 m = int(input())
@@ -22,15 +31,6 @@ for _ in range(m):
 
 result = 0
 status = [False for _ in range(n + 1)]        # 0: unvisited, 1: visited(Virus)
-def dfs(start):
-  global result
-  if status[start] != True:
-    status[start] = True
-    for i in range(len(network[start])):
-      if status[network[start][i]] != True:
-        dfs(network[start][i])
-        result += 1
-
 dfs(1)
 print(result)
 
