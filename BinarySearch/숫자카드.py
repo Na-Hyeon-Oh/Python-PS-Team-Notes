@@ -53,4 +53,5 @@ for num in nums:
 '''
 i. 이진 탐색
 ii. 가지고 있는 cards 번호를 set으로 가지고 각 num마다 set
+- ii가 더 
 '''
