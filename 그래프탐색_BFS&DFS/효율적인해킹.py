@@ -46,6 +46,7 @@ for i in range(1, n+1):
 print(*result)    
 
 '''
+- PyPy3
 - dfs/bfs를 모든 node마다 실행
 - bfs : O(N+M)인데 모든 노드마다 하므로 O(N*M) -> 최악의 경우 10^9 연산
 '''
