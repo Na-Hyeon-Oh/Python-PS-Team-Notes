@@ -10,6 +10,8 @@ N개의 돌이 일렬로 나열되어 있을 때 (A1A2...Ai...AN), 가장 왼쪽
 * 제한 시간 2초
 '''
 
+# i. PyPy3
+
 import sys
 
 def input():
@@ -23,6 +25,26 @@ dp = [0] + [INF] * (n - 1)
 for i in range(1, n):
   for j in range(i + 1, n + 1):
     dp[j - 1] = min(dp[j - 1], max(dp[i - 1], (j - i) * (1 + abs(a[i - 1] - a[j - 1]))))
+    
+print(dp[-1])
+
+
+# ii. Python3
+
+import sys
+
+def input():
+  return sys.stdin.readline().rstrip()
+
+n = int(input())
+a = list(map(int, input().split()))
+
+dp = [0] * n
+for j in range(1, n):
+  maxK = []
+  for i in range(0, j):
+    maxK.append(max(dp[i], (j - i) * (1 + abs(a[i] - a[j]))))
+  dp[j] = min(maxK)
     
 print(dp[-1])
 
