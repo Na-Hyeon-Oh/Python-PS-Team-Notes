@@ -24,10 +24,10 @@ right = len(liquid) - 1
 while left < right:
   sum = liquid[left] + liquid[right]
   if abs(min) >= abs(sum) :
-    if abs(min) > abs(sum): result.clear()
-    min = sum
-    result.append(liquid[left])
-    result.append(liquid[right])
+    if abs(min) > abs(sum): 
+      result.clear()
+      min = sum
+    result.extend([liquid[left], liquid[right]])
   if sum >= 0: right -= 1
   else: left += 1
 
