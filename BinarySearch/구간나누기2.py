@@ -56,8 +56,7 @@ def binarySearch(start, end, n):
   while start <= end:
     mid = (start + end) // 2
     groupNo = 1
-    minNum = array[0]
-    maxNum = array[0]
+    minNum = maxNum = array[0]
     for i in range(1, n):              # array의 값 하나씩 검사
       minNum = min(minNum, array[i])
       maxNum = max(maxNum, array[i])
