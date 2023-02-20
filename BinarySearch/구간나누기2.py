@@ -10,6 +10,7 @@ N개의 수로 이루어진 1차원 배열이 있을 때, M개의 구간으로 �
 * 제한 시간 2초
 '''
 
+# i. 
 import sys
 
 def input():
@@ -41,6 +42,41 @@ array = list(map(int, input().split()))
 left = 0
 right = max(array) - min(array)
 print(binarySearch(left, right))
+
+
+# ii. (i. 정리된 버전)
+
+import sys
+
+def input():
+  return sys.stdin.readline().rstrip()
+
+def binarySearch(start, end, n):
+  result = 0
+  while start <= end:
+    mid = (start + end) // 2
+    groupNo = 1
+    minNum = array[0]
+    maxNum = array[0]
+    for i in range(1, n):              # array의 값 하나씩 검사
+      minNum = min(minNum, array[i])
+      maxNum = max(maxNum, array[i])
+      if maxNum - minNum > mid: 
+        groupNo += 1  
+        minNum = maxNum = array[i]
+    if groupNo > m:            # group 개수가 많으면 줄일 수 있도록 mid를 키우기
+      start = mid + 1
+    else:                      # group 개수가 m 이하이면 그 최솟값까지 계속 mid를 줄이기
+      result = mid
+      end = mid - 1
+  return result
+
+n, m = map(int, input().split())
+array = list(map(int, input().split()))
+
+left = 0
+right = max(array) - min(array)
+print(binarySearch(left, right, n))
 
 '''
 구하려고 하는 것은 구간 점수의 최댓값의 최솟값 -> 최악의 경우 N * 10000 ~= 1e7만큼의 연산 필요 -> 이진 탐색
