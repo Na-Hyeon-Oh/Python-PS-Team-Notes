@@ -19,6 +19,7 @@ liquids = list(map(int, input().split()))
 liquids.sort()
 result = []
 min = 1e10
+flag = False
 for i in range(n-2):
   first = liquids[i]
   start = i + 1
@@ -29,11 +30,16 @@ for i in range(n-2):
       min = abs(sum)
       result.clear()
       result.extend([first, liquids[start], liquids[end]])
-    if sum == 0: break
+    if sum == 0:
+      flag = True
+      break
     elif sum > 0: end -= 1
     else: start += 1
+  if flag: break
 
 print(*result)
+
+
 
 '''
 - 한 용액을 먼저 선택한 뒤 뒤에 용액들에 대해 두 용액 구하기 (O(n^2 + nlogn) = )
