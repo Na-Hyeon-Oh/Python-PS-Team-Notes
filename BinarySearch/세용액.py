@@ -13,6 +13,37 @@ import sys
 def input():
   return sys.stdin.readline().rstrip()
 
+n = int(input())
+liquids = list(map(int, input().split()))
+
+liquids.sort()
+result = []
+min = 1e10
+for i in range(n-2):
+  first = liquids[i]
+  start = i + 1
+  end = n - 1
+  while start < end:
+    sum = first + liquids[start] + liquids[end]
+    if abs(sum) < min:
+      min = abs(sum)
+      result.clear()
+      result.extend([first, liquids[start], liquids[end]])
+    if sum == 0: break
+    elif sum > 0: end -= 1
+    else: start += 1
+
+print(*result)
+
+'''
+- 한 용액을 먼저 선택한 뒤 뒤에 용액들에 대해 두 용액 구하기 (O(n^2 + nlogn) = )
+* (아래 코드 참조) 두 용액을 먼저 선택한 뒤 그 사이의 용액 중 전체 용액의 특성값이 최소가 되는 하나의 용액 설정 -> O(n^2 log n) -> 시간 초과
+
+import sys
+
+def input():
+  return sys.stdin.readline().rstrip()
+
 def binarySearch(start, end):
   min = 1e10
   while end - start > 1:
@@ -45,6 +76,4 @@ binarySearch(left, right)
 
 print(*result)
 
-'''
-- 두 용액을 먼저 선택한 뒤 그 사이의 용액 중 전체 용액의 특성값이 최소가 되는 하나의 용액 설정
 '''
