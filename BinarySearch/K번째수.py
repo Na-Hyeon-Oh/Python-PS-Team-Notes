@@ -1,4 +1,4 @@
-# K번째 수
+# [G2] K번째 수
 # https://www.acmicpc.net/problem/1300
 '''
 N * N 크기의 배열 A가 있고 A[i][j] = i * j이다.
