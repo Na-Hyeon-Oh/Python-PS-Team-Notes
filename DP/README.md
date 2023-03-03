@@ -89,8 +89,20 @@
     - 시간제한 1초, 메모리제한 128MB
     
         ```
-        
+        x = int(input())
+        bigNum = 1e5
+
+        dp = [0] * x
+        for i in range(1, x):
+            target = i + 1
+        dp[i] = min((dp[target // 5 - 1] if target % 5 == 0 else bigNum),
+                    (dp[target // 3 - 1] if target % 3 == 0 else bigNum), 
+                    (dp[target // 2 - 1] if target % 2 == 0 else bigNum), 
+                    dp[i - 1]) + 1
+
+        print(dp[x - 1])
         ```
+        - Greedy로 풀기에는 5로 나누었을 때 항상 가장 최소의 연산 횟수를 도출하지 않는다.
 
 
 
