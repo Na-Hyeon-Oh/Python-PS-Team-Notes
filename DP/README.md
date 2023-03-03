@@ -105,6 +105,28 @@
         ```
         - Greedy로 풀기에는 5로 나누었을 때 항상 가장 최소의 연산 횟수를 도출하지 않는다.
 
+- 효율적인 화폐 구성
+
+    - N가지 (1 <= N <= 100) 종류의 화폐가 있을 때 화폐의 개수를 최소한으로 이용해 그 가치의 합이 M원 (1 <= M <= 10,000) 이 되도록 하려 한다.
+    - 각 종류의 화폐의 사용에는 제한이 없을 때
+    - M원을 만들기 위한 최소한의 화폐 개수? (불가능할 때는 -1 출력)
+    - 시간제한 1초, 메모리제한 128MB
+            
+            ```
+            n, m = map(int, input().split())
+            money = list(int(input()) for _ in range(n))
+
+            dp = [-1] * (m + 1)                 # dp[i]: i원을 만들기 위한 최소 화폐 개수
+            for value in money:
+                if value <= m: dp[value] = 1
+            for i in range(1, m + 1):
+                minValue = 1e5
+                for value in money:
+                    if i - value >= 0 and dp[i - value] != -1: minValue = min(minValue, dp[i - value] + 1)
+                if minValue != 1e5: dp[i] = minValue
+
+            print(dp[m])
+            ```
 
 
 ## DP VS 분할 정복
