@@ -128,6 +128,38 @@
             print(dp[m])
             ```
 
+- 금광
+    
+    - N * M (1 <= N, M <= 20) 크기의 금광이 있고, 각 칸에는 매장된 금의 개수(1 <= 금의 개수 <= 100)가 있다.
+    - 처음에 첫 번째 열의 어느 행에서든 출발할 수 있을 때, M - 1번에 걸쳐 오른쪽 위/오른쪽/오른쪽 아래 중 하나의 위치로 이동하여 채굴자가 얻을 수 있는 금의 최대 크기는?
+    - 1 <= T (테스트케이스 개수) <= 1000
+    - 시간제한 1초, 메모리제한 128MB
+    
+            ```
+            t = int(input())
+            for _ in range(t):
+            n, m = map(int, input().split())
+            gold = list(map(int, input().split()))
+            dp = []
+            for i in range(n):
+              dp.append(gold[i * m: (i + 1) * m])               # gold를 m개씩 split
+              #row = []
+              #for j in range(m):
+              #  row.append(gold1d[i * m + j])
+              #  if j % m == m - 1: gold2d.append(row)
+
+            for j in range(1, m):
+              for i in range(n):
+                dp[i][j] = dp[i][j] + max(dp[i - 1][j - 1] if i - 1 >= 0 and j - 1 >= 0 else 0, dp[i + 1][j - 1] if i + 1 < n and j - 1 >= 0 else 0, dp[i][j - 1] if j - 1 >= 0 else 0)
+
+            result = 0
+            for i in range(n):
+              result = max(result, dp[i][m - 1])
+            print(result)
+            ```
+            - 금광의 모든 위치에서 왼쪽 위에서 오는 경우, 왼쪽 아래에서 오는 경우, 왼쪽에서 오는 경우를 고려
+            - m - 1번 오른쪽으로 이동하므로 마지막 위치는 m - 1열
+    
 
 ## DP VS 분할 정복
 
