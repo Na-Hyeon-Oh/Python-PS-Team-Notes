@@ -167,8 +167,24 @@
     - 시간제한 1초, 메모리제한 256MB
             
             ```
-            
+            n = int(input())
+            power = list(map(int, input().split()))
+
+            power.reverse()            # LIS 문제로 변환
+            dp = [1] * n
+            for i in range(1, n):
+                for j in range(0, i):
+                    if power[i] > popwer[j]: dp[i] = max(dp[i], dp[j] + 1)
+
+            print(n - max(dp))
             ```
+            
+            - Longest Increasing Subsequence (LIS) : 가장 긴 증가하는 부분 수열
+                - D[i] = array[i]를 마지막 원소로 가지는 부분 수열의 최대 길이
+                - 모든 0 <= j < i에 대하여, D[i] = max(D[i], D[j] + 1) if array[j] < array[i]
+                - i * j => 최악의 경우 시간 복잡도 : O(n^2)
+            - 가장 긴 감소하는 부분 수열을 찾는 문제 -> LIS 알고리즘을 반대로 수행 by power를 reverse
+            
 
 ## DP VS 분할 정복
 
