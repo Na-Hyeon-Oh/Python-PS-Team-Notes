@@ -31,7 +31,7 @@ print(max(dp))
 
 # ii. 
 
-dp = [0]                  # dp[i]: i번째 수로 시작하는 수열의 최대 짝수 개수
+dp = [0]                  # dp[i]: (i+1)번째 홀수 전의 짝수 개
 for i in range(n):
   if s[i] % 2 == 0: dp[-1] += 1          # 짝수 : 마지막에 1 더하기
   else: dp.append(dp[-1])                # 홀수 : 마지막 원소 추가하기
