@@ -28,6 +28,7 @@ for i in range(n):
 
 print(max(dp))
 
+
 # ii. 
 
 dp = [0]                  # dp[i]: i번째 수로 시작하는 수열의 최대 짝수 개수
