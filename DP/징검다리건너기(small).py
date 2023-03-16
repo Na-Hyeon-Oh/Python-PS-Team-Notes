@@ -11,6 +11,7 @@ N개의 돌이 일렬로 나열되어 있고 각 돌에는 Ai의 수가 부여�
 * 시간 제한 1초
 * 메모리 제한 1024MB
 '''
+# PyPy3
 
 import sys
 
@@ -33,7 +34,31 @@ if dp[-1] <= k: print("YES")
 else: print("NO")
 
 
+# Python3
+
+import sys
+
+def input():
+  return sys.stdin.readline()
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+dp = [False] * n            # dp[i]: i번째 돌에 닿을 수 있는지 여
+dp[0] = True
+for i in range(1, n):
+  for j in range(i):
+    if dp[j]:
+      energy = (i - j) * (1 + abs(a[i] - a[j]))
+      if energy <= k: dp[i] = True
+
+if dp[-1]: print("YES")
+else: print("NO")
+  
 '''
+최악 O(N^2) 알고리즘
 PyPy3
-- 각 돌의 위치에서 오른쪽에 위치한 돌까지의 에너지가 k보다 크지 확인 -> 최악 O(N^2)
+- 각 돌의 위치에서 오른쪽에 위치한 돌까지의 에너지가 k보다 크지 않은지 확인
+Python3
+- 각 돌의 위치에서 왼쪽에 위치한 돌부터 각 돌의 위치까지 필요한 에너지가 K보다 크지 않은지 확인
 '''
