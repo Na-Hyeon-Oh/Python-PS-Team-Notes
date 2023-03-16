@@ -54,7 +54,7 @@ if n > 1: dp[1][0] = energy[0][0]
 if n > 2: dp[2][0] = min(dp[1][0] + energy[1][0], energy[0][1])
 for i in range(3, n):
   dp[i][0] = min(dp[i - 1][0] + energy[i - 1][0], dp[i - 2][0] + energy[i - 2][1])
-  dp[i][1] = min(min(dp[i - 1][1] + energy[i - 1][0], dp[i - 2][1] + energy[i - 2][1]), dp[i - 3][0] + k)
+  dp[i][1] = min(min(dp[i - 1][1] + energy[i - 1][0], dp[i - 2][1] + energy[i - 2][1]), dp[i - 3][0] + k)         # 이중 min() => 매우 큰 점프를 하는 경우는 한 번만 
 
 print(min(dp[n - 1][0], dp[n - 1][1]))
 
