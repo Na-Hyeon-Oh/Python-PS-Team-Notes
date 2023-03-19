@@ -12,9 +12,6 @@ import sys
 def input():
   return sys.stdin.readline()
 
-def sortKey(element):
-  return element[0] / element[1]
-
 c, n = map(int, input().split())
 array = [list(map(int,input().split())) for _ in range(n)]
 
