@@ -69,6 +69,7 @@ print(result)
 
 
 '''
+<구현, 시뮬레이션, 브루트포스, >
 - 전체 경우의 수 : 4 ^ 5 = 1024 => 완전 탐색 가능
 - 각 방향(상하좌우)로 이동 결과를 stack을 이용해서 계산하고 그 결과를 initialized 배열(afterMove)에 반영하여 return
 - 2차원 배열이 있을 때 (arr) => max(max(arr)) != for {for max=max(max, element)}
