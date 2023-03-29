@@ -78,4 +78,5 @@ print(maxResult)
 
 '''
 n, m  범위가 작으므로 벽을 설치하는 모든 경우의 수에 대해서 바이러스를 전파 시키고, 안전영역의 크기를 계산하여 그 최댓값 출력
+* itertools 없이 순열/조합 구현 참고: https://yangnyang.tistory.com/14
 '''
