@@ -41,7 +41,7 @@ for x, y, d, g in curves:
 result = 0
 for i in range(100):            # 격자 한 칸의 모든 꼭짓점 검사
   for j in range(100):
-    if (grid[i][j] == True and grid[i + 1][j] == True and grid[i][j + 1] == True and grid[i + 1][j + 1]): result += 1
+    if (grid[i][j] and grid[i + 1][j] and grid[i][j + 1] and grid[i + 1][j + 1]): result += 1
 
 print(result)
 
@@ -73,7 +73,7 @@ for x, y, d, g in curves:
 result = 0
 for i in range(100):            # 격자 한 칸의 모든 꼭짓점 검사
   for j in range(100):
-    if (grid[i][j] == True and grid[i + 1][j] == True and grid[i][j + 1] == True and grid[i + 1][j + 1]): result += 1
+    if (grid[i][j] and grid[i + 1][j] and grid[i][j + 1] and grid[i + 1][j + 1]): result += 1
 
 print(result)
 
