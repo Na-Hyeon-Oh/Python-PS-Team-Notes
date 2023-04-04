@@ -1,3 +1,8 @@
+'''
+[B_G3] 예술성
+* BFS, 조합, 구현,션시뮬레이션
+'''
+
 # i.
 
 from copy import deepcopy
