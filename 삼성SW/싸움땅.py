@@ -1,6 +1,6 @@
 '''
 [CT_G2] 싸움땅
-# 
+# 시뮬레이션
 '''
 
 n, m, k = map(int, input().split())
