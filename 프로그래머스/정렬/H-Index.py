@@ -23,5 +23,6 @@ def solution(citations):
   
   
 '''
+문제 이해가 어려웠당..
 * enumerate(list) => (idx, list[idx]) 값을 얻을 수 있다.
 '''
