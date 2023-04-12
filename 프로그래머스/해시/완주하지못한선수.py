@@ -19,5 +19,7 @@ def solution(participant, completion):
   return list(answer.keys())[0]
 
 '''
-정렬 후 다른 순서일 경우 해당 참가자는 완주하지 못했다는 것이므로 출
+i. 정렬 후 다른 순서일 경우 해당 참가자는 완주하지 못했다는 것이므로 출력
+ii. collections.Counter(list에서 각 원소가 몇 번 나오는지 저장된 객체)와 산술연산자(-)를 이용해 남은 key 확인
+* ref. https://www.daleseo.com/python-collections-counter/
 '''
