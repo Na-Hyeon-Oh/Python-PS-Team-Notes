@@ -20,4 +20,5 @@ def solution(progresses, speeds):
   
  '''
  - math.ceil 대신 음수-양수 변환 활용
+ - 걸리는 시간이 더 길면 그 전까지의 개수 answer에 
  '''
