@@ -21,7 +21,7 @@ def solution(prices):
     return answer
 
 
-# ii. Stack 이용 O(n)
+# ii. Stack 이용 O(n^2) but i보다 빠름 
 def solution(prices):
     stack = []
     answer = [0] * len(prices)
