@@ -5,6 +5,8 @@ ICN 공항에서 주어진 항공권을 모두 이용하여 여행경로를 짜�
 * 가능한 경로가 2개 이상일 경우, 알파벳 순서가 앞서는 경로를 return
 * 모든 도시를 방문할 수 없는 경우는 없다.
 '''
+
+# i. global 
 from copy import deepcopy
 
 global answer
@@ -28,3 +30,31 @@ def dfs(n, arr, cities):
         tmpCities = deepcopy(cities)
         tmpCities[src].remove(dest)
         dfs(n, arr + [dest], tmpCities)
+        
+# ii. global 쓰지 않고 성능 개선
+
+from collections import defaultdict 
+
+def dfs(graph, N, key, footprint):
+    if len(footprint) == N + 1: return footprint
+
+    for idx, country in enumerate(graph[key]):
+        graph[key].pop(idx)
+
+        tmp = footprint[:]
+        tmp.append(country)
+        ret = dfs(graph, N, country, tmp)
+
+        graph[key].insert(idx, country)
+
+        if ret: return ret
+
+def solution(tickets):
+    graph = defaultdict(list)
+    N = len(tickets)
+    for ticket in tickets:
+        graph[ticket[0]].append(ticket[1])
+    for node in graph:
+        graph[node].sort()
+
+    return dfs(graph, N, "ICN", ["ICN"])
