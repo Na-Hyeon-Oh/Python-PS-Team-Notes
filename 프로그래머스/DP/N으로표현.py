@@ -22,3 +22,7 @@ def solution(N, number):
         if number in partial_set: return cnt
         set_list.append(partial_set)
     return -1
+
+'''
+ref. https://alreadyusedadress.tistory.com/115
+'''
